@@ -11,10 +11,21 @@ function createPost() {
 
   document.getElementsByTagName("main")[0].innerHTML += pageTemplate();
 
-  var blogSection = postTemp({'title': postTitle, 'body': post, 'poster': postAuthor });
+  var blogSection = postTemp({'title': postTitle, 'body': post, 'poster': postAuthor});
   var commentSection = commentsTemp();
   var postElement = document.getElementById("post");
 
   postElement.innerHTML = blogSection;
   postElement.getElementsByTagName("footer")[0].innerHTML = commentSection;
+}
+
+function postComment() {
+  var commentTemp = _.template(document.getElementById("comment-template").innerHTML);
+
+  var commentText = document.getElementById("commentText").value;
+  var commenterName = document.getElementById("commenter").value;
+
+  var commentsSection = document.getElementById("comments");
+
+  commentsSection.innerHTML += commentTemp({'commenter': commenterName, 'comment': commentText});
 }

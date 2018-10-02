@@ -10,4 +10,11 @@ function createPost() {
   var post = document.getElementById("postBody").value;
 
   document.getElementsByTagName("main")[0].innerHTML += pageTemplate();
+
+  var blogSection = postTemp({'title': postTitle, 'body': post, 'poster': postAuthor });
+  var commentSection = commentsTemp();
+  var postElement = document.getElementById("post");
+
+  postElement.innerHTML = blogSection;
+  postElement.getElementsByTagName("footer")[0].innerHTML = commentSection;
 }
